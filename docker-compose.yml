@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  database:
+    container_name: dbsellerdb
+    image: postgres:9.4
+    volumes:
+      - ./database/:/home
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+  web:
+    container_name: dbsellerphp
+    ports:
+      - "8056:80"
+    build:
+      context: ./Dockerfiles/php-apache
+    volumes:
+      - ./:/var/www/html/
+    depends_on:
+      - database
