@@ -58,7 +58,7 @@
       } else if (!empty($_GET['p']) && $_GET['p'] == 'tarefas') {
         require_once('views/tarefas.php');
       } else {
-        require_once('views/notfound.php');
+        require_once('views/404.php');
       }
     }
     ?>
